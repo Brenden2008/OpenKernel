@@ -48,19 +48,4 @@ module.exports = {
             return err;
         });
     },
-    // Delete all log entries from the log database
-    deleteAll: async function () {
-        return db.logs.allDocs({ include_docs: true }).then(function (result) {
-            var logList = []
-            for (const element of result.rows) {
-                logList.push(element.doc)
-            }
-            for (const element of logList) {
-                db.logs.remove(element);
-            }
-            return logList;
-        }).catch(function (err) {
-            return err;
-        });
-    }
 }
