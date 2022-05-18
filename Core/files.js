@@ -15,7 +15,7 @@ module.exports = {
         }).then(function (response) {
             return response;
         }).catch(function (err) {
-            await logEngine.write("error", "Failed to create file: " + fileName + " at path: " + filePath);
+            logEngine.write("error", "Failed to create file: " + fileName + " at path: " + filePath);
             return err;
         });
     },
@@ -23,7 +23,7 @@ module.exports = {
         return db.files.get(filePath).then(function (doc) {
             return doc;
         }).catch(function (err) {
-            await logEngine.write("error", "Failed to read file at path: " + filePath);
+            logEngine.write("error", "Failed to read file at path: " + filePath);
             return err;
         });
     },
@@ -39,7 +39,7 @@ module.exports = {
         }).then(function (response) {
             return response;
         }).catch(function (err) {
-            await logEngine.write("error", "Failed to update file: " + fileName + " at path: " + filePath);
+            logEngine.write("error", "Failed to update file: " + fileName + " at path: " + filePath);
             return err;
         });
     },
@@ -49,7 +49,7 @@ module.exports = {
         }).then(function (result) {
             return result;
         }).catch(function (err) {
-            await logEngine.write("error", "Failed to delete file at path: " + filePath);
+            logEngine.write("error", "Failed to delete file at path: " + filePath);
             return err;
         });
     },
@@ -61,7 +61,7 @@ module.exports = {
             }
             return fileList;
         }).catch(function (err) {
-            await logEngine.write("error", "Failed to list files");
+            logEngine.write("error", "Failed to list files: " + err);
             return err;
         });
     },

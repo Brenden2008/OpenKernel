@@ -37,5 +37,30 @@ module.exports = {
         }).catch(function (err) {
             return err;
         });
+    },
+    // Delete a specific log entry from the log database by its ID
+    delete: async function (id) {
+        return db.logs.get(id).then(function (doc) {
+            return db.logs.remove(doc);
+        }).then(function (result) {
+            return result;
+        }).catch(function (err) {
+            return err;
+        });
+    },
+    // Delete all log entries from the log database
+    deleteAll: async function () {
+        return db.logs.allDocs({ include_docs: true }).then(function (result) {
+            var logList = []
+            for (const element of result.rows) {
+                logList.push(element.doc)
+            }
+            for (const element of logList) {
+                db.logs.remove(element);
+            }
+            return logList;
+        }).catch(function (err) {
+            return err;
+        });
     }
 }
