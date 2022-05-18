@@ -5,6 +5,7 @@
 const fs = require("./files.js");
 const db = require("./db.js");
 const logEngine = require("./logEngine.js");
+const plugins = require("./plugins.js");
 
 module.exports = {
     files: fs,
@@ -12,4 +13,5 @@ module.exports = {
     commandEngine: {},
     computeEngine: {},
     logEngine: logEngine,
+    plugins: plugins,
 }
