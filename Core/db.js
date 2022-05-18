@@ -6,5 +6,6 @@ var PouchDB = require('pouchdb');
 
 module.exports = {
     registry: new PouchDB('registry'),
-    files: new PouchDB('files')
+    files: new PouchDB('files'),
+    logs: new PouchDB('logs'),
 }
