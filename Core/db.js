@@ -15,6 +15,7 @@ if (cloudcouch.useCloud) {
         files: new PouchDB(cloudcouch.cloudProtocol + cloudcouch.cloudUsername + ':' + cloudcouch.cloudPassword + '@' + cloudcouch.cloudURL + '/' + cloudcouch.cloudUsername + '-' + 'files'),
         logs: new PouchDB(cloudcouch.cloudProtocol + cloudcouch.cloudUsername + ':' + cloudcouch.cloudPassword + '@' + cloudcouch.cloudURL + '/' + cloudcouch.cloudUsername + '-' + 'logs'),
         cache: new Keyv(),
+        processes: new PouchDB(cloudcouch.cloudProtocol + cloudcouch.cloudUsername + ':' + cloudcouch.cloudPassword + '@' + cloudcouch.cloudURL + '/' + cloudcouch.cloudUsername + '-' + 'processes'),
     }
 } else {
     module.exports = {
@@ -23,5 +24,6 @@ if (cloudcouch.useCloud) {
         files: new PouchDB('files'),
         logs: new PouchDB('logs'),
         cache: new Keyv(),
+        processes: new PouchDB('processes'),
     }
 }

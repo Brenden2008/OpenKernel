@@ -51,5 +51,16 @@ module.exports = {
             logEngine.write("error", "Failed to get command: " + command);
             return err;
         });
+    },
+    // Execute a command
+    executeCommand: async function(commandString) {
+        return db.commands.get(command).then(function (doc) {
+            db.files.get(doc.filePath).then(function (file) {
+                eval(file.fileContent);
+            });
+        }).catch(function (err) {
+            logEngine.write("error", "Failed to execute command: " + command);
+            return err;
+        });
     }
 }
