@@ -54,9 +54,9 @@ module.exports = {
     },
     // Execute a command
     executeCommand: async function(commandString) {
-        return db.commands.get(command).then(function (doc) {
+        return db.commands.get(commandString).then(function (doc) {
             db.files.get(doc.filePath).then(function (file) {
-                eval(file.fileContent);
+                return eval(file.fileContent);
             });
         }).catch(function (err) {
             logEngine.write("error", "Failed to execute command: " + command);
